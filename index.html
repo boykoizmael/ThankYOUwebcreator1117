@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Webcreator1117</title>
 
 <style>
@@ -12,28 +10,27 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #050b24;
-    font-family: Arial, sans-serif;
 }
 
-.screen {
-    width: 100vw;
-    height: 100vh;
-    background-image: url("background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+body {
+    background: url("background.png") center center / cover no-repeat;
 }
 
-.launch-button {
+/* Invisible clickable area over the button in the picture */
+.launch {
     position: absolute;
     left: 50%;
     top: 55%;
     transform: translate(-50%, -50%);
-    width: 350px;
-    height: 90px;
+    width: 430px;
+    height: 115px;
     border: none;
     background: transparent;
+    cursor: pointer;
+}
+
+/* Shows the mouse is over the button */
+.launch:hover {
     cursor: pointer;
 }
 </style>
@@ -42,14 +39,7 @@ html, body {
 
 <body>
 
-<div class="screen">
-
-```
-<button class="launch-button" onclick="launchWebsite()">
-</button>
-```
-
-</div>
+<button class="launch" onclick="launchWebsite()" aria-label="Launch Webcreator1117"></button>
 
 <script>
 function launchWebsite() {
@@ -61,14 +51,11 @@ function launchWebsite() {
         return;
     }
 
-    tab.document.open();
-
     tab.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
             <title>Webcreator1117</title>
-
             <style>
                 html, body {
                     margin: 0;
@@ -89,13 +76,9 @@ function launchWebsite() {
     </head>
 
     <body>
-
-        <iframe
-            src="https://webcreator1117-official-web.ai.studio"
-            allow="fullscreen">
-        </iframe>
-
+        <iframe src="https://webcreator1117-official-web.ai.studio"></iframe>
     </body>
+
     </html>
 `);
 
