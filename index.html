@@ -1,38 +1,181 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-    <title>Webcreator1117 Launcher</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webcreator1117</title>
 
-```
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #111;
-        font-family: Arial, sans-serif;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    button {
-        padding: 30px 60px;
-        font-size: 28px;
-        cursor: pointer;
-    }
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Futuristic background */
+body {
+    background:
+        radial-gradient(circle at 50% 45%, rgba(0,180,255,.25), transparent 30%),
+        linear-gradient(180deg, #020617 0%, #071b3d 50%, #020617 100%);
+}
+
+/* Stars */
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 10% 20%, white, transparent),
+        radial-gradient(2px 2px at 25% 70%, white, transparent),
+        radial-gradient(1px 1px at 40% 30%, white, transparent),
+        radial-gradient(2px 2px at 60% 15%, white, transparent),
+        radial-gradient(1px 1px at 75% 60%, white, transparent),
+        radial-gradient(2px 2px at 90% 25%, white, transparent),
+        radial-gradient(1px 1px at 80% 85%, white, transparent),
+        radial-gradient(2px 2px at 15% 90%, white, transparent);
+    opacity: .8;
+}
+
+/* Glow behind everything */
+.glow {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    width: 700px;
+    height: 700px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(0,140,255,.18), transparent 65%);
+    filter: blur(30px);
+}
+
+/* Main content */
+.container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Title */
+.logo {
+    font-size: clamp(45px, 7vw, 90px);
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: white;
+    text-shadow:
+        0 0 10px #00aaff,
+        0 0 30px #0088ff,
+        0 0 70px #0066ff;
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: #b9dcff;
+    font-size: clamp(14px, 2vw, 22px);
+    letter-spacing: 6px;
+}
+
+/* Launch button */
+.launch {
+    margin-top: 55px;
+    width: 330px;
+    height: 90px;
+
+    border: 2px solid #5ecbff;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(0,120,255,.85),
+        rgba(0,50,180,.85)
+    );
+
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(0,170,255,.8),
+        0 0 45px rgba(0,100,255,.5);
+
+    transition: .2s;
+}
+
+.launch:hover {
+    transform: scale(1.07);
+    box-shadow:
+        0 0 25px rgba(0,200,255,1),
+        0 0 70px rgba(0,100,255,.8);
+}
+
+.launch:active {
+    transform: scale(.97);
+}
+
+/* Bottom text */
+.footer {
+    position: fixed;
+    bottom: 25px;
+    color: rgba(255,255,255,.5);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
 </style>
-```
 
 </head>
 
 <body>
 
-<button onclick="launch()">LAUNCH WEBSITE</button>
+<div class="stars"></div>
+<div class="glow"></div>
+
+<div class="container">
+
+```
+<div class="logo">
+    WEBcreator1117
+</div>
+
+<div class="subtitle">
+    YOUR WEBSITE · ONE CLICK AWAY
+</div>
+
+<button class="launch" onclick="launchWebsite()">
+    🚀 LAUNCH
+</button>
+```
+
+</div>
+
+<div class="footer">
+    WEBcreator1117 SYSTEM
+</div>
 
 <script>
-function launch() {
-    window.open("https://webcreator1117-official-web.ai.studio", "_blank");
+function launchWebsite() {
+
+    const newTab = window.open(
+        "https://webcreator1117-official-web.ai.studio",
+        "_blank"
+    );
+
+    if (!newTab) {
+        alert("The browser blocked the new tab. Please allow pop-ups.");
+    }
 }
 </script>
 
