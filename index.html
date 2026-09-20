@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Test</title>
+</head>
+
+<body style="background:#111;color:white;text-align:center;padding-top:100px;font-family:Arial">
+
+<h1 id="status">JavaScript is loading...</h1>
+
+<button onclick="test()"
+style="font-size:30px;padding:20px 40px;cursor:pointer;">
+CLICK ME </button>
+
+<script>
+function test() {
+    document.getElementById("status").innerText = "IT WORKS!";
+    window.open("https://example.com", "_blank");
+}
+</script>
+
+</body>
+</html>
