@@ -11,46 +11,32 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
 }
 
 body {
-    background:
-        radial-gradient(circle at center, #123a70 0%, #06152d 45%, #01050d 100%);
+    background: linear-gradient(135deg, #020617, #0b3b70);
+    color: white;
+    font-family: Arial, sans-serif;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.box {
-    text-align: center;
-    color: white;
-}
-
-h1 {
-    font-size: 70px;
-    margin: 0 0 15px;
-    text-shadow: 0 0 25px #00aaff;
-}
-
-p {
-    color: #b9dcff;
-    letter-spacing: 3px;
-    margin-bottom: 45px;
-}
-
 button {
-    width: 330px;
-    height: 90px;
-    border: 2px solid #5ecbff;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #0078ff, #0032b4);
-    color: white;
-    font-size: 25px;
+    padding: 25px 50px;
+    font-size: 26px;
     font-weight: bold;
+
+    color: white;
+    background: #087cff;
+
+    border: 3px solid #8bd9ff;
+    border-radius: 18px;
+
     cursor: pointer;
-    box-shadow: 0 0 25px rgba(0,170,255,.7);
+
+    box-shadow: 0 0 30px rgba(0,150,255,.8);
 }
 
 button:hover {
@@ -62,73 +48,44 @@ button:hover {
 
 <body>
 
-<div class="box">
-
-```
-<h1>WEBcreator1117</h1>
-
-<p>YOUR WEBSITE · ONE CLICK AWAY</p>
-
-<button onclick="launch()">
-    🚀 LAUNCH WEBSITE
+<button id="launchButton">
+🚀 LAUNCH WEBSITE
 </button>
-```
-
-</div>
 
 <script>
-function launch() {
+document.getElementById("launchButton").addEventListener("click", function () {
 
-    // Open a new tab that starts as about:blank
-    const newTab = window.open("about:blank", "_blank");
+    /* Open a real new tab.
+       Because no URL is supplied, it starts as about:blank. */
+    const newTab = window.open("", "_blank");
 
     if (!newTab) {
-        alert("Please allow pop-ups for this website.");
+        alert("The browser blocked the new tab. Allow pop-ups for this site.");
         return;
     }
 
-    // Put your website inside the about:blank page
-    newTab.document.open();
+    /* Create the page inside about:blank */
+    newTab.document.title = "Webcreator1117";
 
-    newTab.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Webcreator1117</title>
+    newTab.document.body.style.margin = "0";
+    newTab.document.body.style.width = "100vw";
+    newTab.document.body.style.height = "100vh";
+    newTab.document.body.style.overflow = "hidden";
+    newTab.document.body.style.background = "black";
 
-            <style>
-                html, body {
-                    margin: 0;
-                    width: 100%;
-                    height: 100%;
-                    overflow: hidden;
-                    background: black;
-                }
+    const iframe = newTab.document.createElement("iframe");
 
-                iframe {
-                    width: 100%;
-                    height: 100%;
-                    border: 0;
-                }
-            </style>
+    iframe.src = "https://webcreator1117-official-web.ai.studio";
 
-```
-    </head>
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "0";
 
-    <body>
-        <iframe
-            src="https://webcreator1117-official-web.ai.studio"
-            allow="fullscreen">
-        </iframe>
-    </body>
+    iframe.allow = "fullscreen";
 
-    </html>
-`);
-
-newTab.document.close();
-```
-
-} </script>
+    newTab.document.body.appendChild(iframe);
+});
+</script>
 
 </body>
 </html>
