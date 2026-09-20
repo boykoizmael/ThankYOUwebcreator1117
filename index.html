@@ -2,118 +2,39 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcreator1117 Launcher</title>
 
-<title>Webcreator1117</title>
-
+```
 <style>
-html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #111;
+        font-family: Arial, sans-serif;
+    }
 
-body {
-    background-image: url("background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.launch-button {
-    position: fixed;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%);
-
-    width: 350px;
-    height: 90px;
-
-    background: rgba(0, 120, 255, 0.85);
-    color: white;
-
-    border: 3px solid white;
-    border-radius: 20px;
-
-    font-size: 28px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px rgba(0, 150, 255, 0.8),
-        0 0 50px rgba(0, 150, 255, 0.5);
-
-    z-index: 9999;
-}
-
-.launch-button:hover {
-    transform: translate(-50%, -50%) scale(1.05);
-}
-
-.launch-button:active {
-    transform: translate(-50%, -50%) scale(0.98);
-}
+    button {
+        padding: 30px 60px;
+        font-size: 28px;
+        cursor: pointer;
+    }
 </style>
+```
 
 </head>
 
 <body>
 
-<button class="launch-button" onclick="launchWebsite()">
-    🚀 LAUNCH WEBSITE
-</button>
+<button onclick="launch()">LAUNCH WEBSITE</button>
 
 <script>
-function launchWebsite() {
-
-    const tab = window.open("about:blank", "_blank");
-
-    if (!tab) {
-        alert("Your browser blocked the new tab. Allow pop-ups and try again.");
-        return;
-    }
-
-    tab.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Webcreator1117</title>
-
-            <style>
-                html, body {
-                    margin: 0;
-                    width: 100%;
-                    height: 100%;
-                    overflow: hidden;
-                    background: black;
-                }
-
-                iframe {
-                    width: 100%;
-                    height: 100%;
-                    border: 0;
-                }
-            </style>
-
-```
-    </head>
-
-    <body>
-        <iframe
-            src="https://webcreator1117-official-web.ai.studio"
-            allow="fullscreen">
-        </iframe>
-    </body>
-    </html>
-`);
-
-tab.document.close();
-```
-
-} </script>
+function launch() {
+    window.open("https://webcreator1117-official-web.ai.studio", "_blank");
+}
+</script>
 
 </body>
 </html>
