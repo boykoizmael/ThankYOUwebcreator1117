@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,84 +6,502 @@
 <title>Webcreator1117</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     margin: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #020617;
+    color: white;
 }
 
+/* Animated space background */
 body {
-    background: linear-gradient(135deg, #020617, #0b3b70);
-    color: white;
-    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(0, 132, 255, 0.22), transparent 25%),
+        radial-gradient(circle at 15% 20%, rgba(60, 0, 255, 0.16), transparent 22%),
+        radial-gradient(circle at 85% 25%, rgba(0, 210, 255, 0.12), transparent 20%),
+        linear-gradient(180deg, #01030b 0%, #061638 48%, #020611 100%);
+}
+
+/* Stars */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 8% 12%, white 1px, transparent 2px),
+        radial-gradient(circle at 17% 34%, white 1px, transparent 2px),
+        radial-gradient(circle at 27% 18%, white 1px, transparent 2px),
+        radial-gradient(circle at 36% 9%, white 1px, transparent 2px),
+        radial-gradient(circle at 44% 29%, white 1px, transparent 2px),
+        radial-gradient(circle at 53% 14%, white 1px, transparent 2px),
+        radial-gradient(circle at 61% 31%, white 1px, transparent 2px),
+        radial-gradient(circle at 69% 11%, white 1px, transparent 2px),
+        radial-gradient(circle at 78% 25%, white 1px, transparent 2px),
+        radial-gradient(circle at 88% 15%, white 1px, transparent 2px),
+        radial-gradient(circle at 95% 36%, white 1px, transparent 2px),
+        radial-gradient(circle at 13% 65%, #5bbcff 1px, transparent 2px),
+        radial-gradient(circle at 31% 73%, #5bbcff 1px, transparent 2px),
+        radial-gradient(circle at 68% 70%, #5bbcff 1px, transparent 2px),
+        radial-gradient(circle at 87% 62%, #5bbcff 1px, transparent 2px);
+    opacity: 0.85;
+    z-index: 0;
+}
+
+/* Horizon glow */
+.horizon {
+    position: fixed;
+    left: 50%;
+    bottom: 18%;
+    width: 100%;
+    height: 240px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+        ellipse,
+        rgba(0, 180, 255, 0.25),
+        transparent 65%
+    );
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+/* Mountains made entirely from CSS */
+.mountains {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 35%;
+    pointer-events: none;
+}
+
+.mountain {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 260px solid #020817;
+    filter: drop-shadow(0 0 20px rgba(0,100,255,.2));
+}
+
+.m1 { left: -100px; transform: scale(1.4); }
+.m2 { left: 10%; transform: scale(.9); }
+.m3 { left: 27%; transform: scale(1.2); }
+.m4 { right: 23%; transform: scale(1.3); }
+.m5 { right: 8%; transform: scale(.95); }
+.m6 { right: -120px; transform: scale(1.5); }
+
+/* Main content */
+.container {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 80px 20px;
 }
 
-button {
-    padding: 25px 50px;
-    font-size: 26px;
-    font-weight: bold;
+/* Logo */
+.logo-icon {
+    width: 105px;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 58px;
+    font-weight: 900;
+
+    color: #8de3ff;
+
+    background: linear-gradient(
+        135deg,
+        #e8fbff,
+        #00d4ff 45%,
+        #006eff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 0 30px rgba(0,180,255,.7);
+}
+
+/* Brand */
+.logo {
+    margin-top: 5px;
+
+    font-size: clamp(44px, 7vw, 88px);
+    font-weight: 800;
+    letter-spacing: -3px;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,.25),
+        0 0 40px rgba(0,140,255,.5);
+}
+
+.logo span {
+    color: #00bfff;
+}
+
+.subtitle {
+    margin-top: 12px;
+
+    font-size: clamp(13px, 1.7vw, 20px);
+    letter-spacing: 7px;
+
+    color: #b9d7ff;
+}
+
+/* Main launch button */
+.launch {
+    margin-top: 50px;
+
+    min-width: 390px;
+    padding: 24px 42px;
+
+    border: 2px solid #6be2ff;
+    border-radius: 24px;
 
     color: white;
-    background: #087cff;
 
-    border: 3px solid #8bd9ff;
-    border-radius: 18px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 139, 255, .95),
+            rgba(44, 67, 255, .92)
+        );
+
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
 
     cursor: pointer;
 
-    box-shadow: 0 0 30px rgba(0,150,255,.8);
+    box-shadow:
+        0 0 12px rgba(0, 200, 255, .9),
+        0 0 35px rgba(0, 120, 255, .7),
+        inset 0 0 20px rgba(255,255,255,.12);
+
+    transition: transform .2s, box-shadow .2s;
 }
 
-button:hover {
-    transform: scale(1.05);
+.launch:hover {
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 20px rgba(0, 230, 255, 1),
+        0 0 60px rgba(0, 120, 255, .9),
+        inset 0 0 25px rgba(255,255,255,.2);
+}
+
+.launch:active {
+    transform: scale(.97);
+}
+
+/* Feature buttons */
+.features {
+    display: flex;
+    gap: 70px;
+    margin-top: 70px;
+}
+
+.feature {
+    width: 140px;
+
+    padding: 15px;
+
+    border: 0;
+    background: transparent;
+
+    color: #b8d8ff;
+
+    cursor: pointer;
+
+    transition: transform .2s, color .2s;
+}
+
+.feature:hover {
+    transform: translateY(-6px);
+    color: white;
+}
+
+.feature-icon {
+    font-size: 32px;
+    color: #64dfff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px #00bfff;
+}
+
+.feature-title {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.feature-description {
+    margin-top: 5px;
+    font-size: 11px;
+    color: #7898c0;
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 28px;
+    right: 40px;
+
+    display: flex;
+    gap: 30px;
+
+    z-index: 20;
+}
+
+.nav button {
+    border: 0;
+    background: transparent;
+    color: #b7cfff;
+
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: color .2s, transform .2s;
+}
+
+.nav button:hover {
+    color: #4fdcff;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+
+    color: rgba(180,215,255,.55);
+
+    font-size: 10px;
+    letter-spacing: 4px;
+
+    z-index: 15;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .nav {
+        display: none;
+    }
+
+    .logo {
+        font-size: 43px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    .launch {
+        min-width: 280px;
+        font-size: 19px;
+    }
+
+    .features {
+        gap: 10px;
+    }
+
+    .feature {
+        width: 105px;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
-<button id="launchButton">
-🚀 LAUNCH WEBSITE
-</button>
+<div class="horizon"></div>
+
+<div class="mountains">
+    <div class="mountain m1"></div>
+    <div class="mountain m2"></div>
+    <div class="mountain m3"></div>
+    <div class="mountain m4"></div>
+    <div class="mountain m5"></div>
+    <div class="mountain m6"></div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+    <button onclick="home()">Home</button>
+    <button onclick="about()">About</button>
+    <button onclick="features()">Features</button>
+    <button onclick="contact()">Contact</button>
+</div>
+
+<!-- Main -->
+<div class="container">
+
+    <div class="logo-icon">W</div>
+
+    <div class="logo">
+        Webcreator<span>1117</span>
+    </div>
+
+    <div class="subtitle">
+        YOUR WEBSITE · ONE CLICK AWAY
+    </div>
+
+    <button class="launch" onclick="launchWebsite()">
+        ↗ &nbsp; LAUNCH WEBSITE
+    </button>
+
+    <div class="features">
+
+        <button class="feature" onclick="fast()">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">FAST</div>
+            <div class="feature-description">Lightning speed</div>
+        </button>
+
+        <button class="feature" onclick="secure()">
+            <div class="feature-icon">◇</div>
+            <div class="feature-title">SECURE</div>
+            <div class="feature-description">Protected access</div>
+        </button>
+
+        <button class="feature" onclick="online()">
+            <div class="feature-icon">◎</div>
+            <div class="feature-title">ONLINE</div>
+            <div class="feature-description">Always available</div>
+        </button>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    WEBCREATOR1117 · BUILDING A BETTER WEB
+</div>
 
 <script>
-document.getElementById("launchButton").addEventListener("click", function () {
 
-    /* Open a real new tab.
-       Because no URL is supplied, it starts as about:blank. */
-    const newTab = window.open("", "_blank");
+/* MAIN LAUNCH BUTTON */
+function launchWebsite() {
 
-    if (!newTab) {
-        alert("The browser blocked the new tab. Allow pop-ups for this site.");
+    /*
+      Open a new tab immediately.
+      It starts as about:blank.
+    */
+    const tab = window.open("", "_blank");
+
+    if (!tab) {
+        alert("The browser blocked the new tab. Please allow pop-ups.");
         return;
     }
 
-    /* Create the page inside about:blank */
-    newTab.document.title = "Webcreator1117";
+    /*
+      Put your website inside the about:blank tab.
+    */
+    tab.document.open();
 
-    newTab.document.body.style.margin = "0";
-    newTab.document.body.style.width = "100vw";
-    newTab.document.body.style.height = "100vh";
-    newTab.document.body.style.overflow = "hidden";
-    newTab.document.body.style.background = "black";
+    tab.document.write(`
+        <!DOCTYPE html>
 
-    const iframe = newTab.document.createElement("iframe");
+        <html>
 
-    iframe.src = "https://webcreator1117-official-web.ai.studio";
+        <head>
 
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.border = "0";
+            <title>Webcreator1117</title>
 
-    iframe.allow = "fullscreen";
+            <style>
 
-    newTab.document.body.appendChild(iframe);
-});
+                html, body {
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    background: black;
+                }
+
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <iframe
+                src="https://webcreator1117-official-web.ai.studio"
+                allow="fullscreen">
+            </iframe>
+
+        </body>
+
+        </html>
+    `);
+
+    tab.document.close();
+}
+
+
+/* OTHER REAL BUTTONS */
+
+function home() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function about() {
+    alert("Webcreator1117\n\nYour website launcher.");
+}
+
+function features() {
+    alert("Features\n\nFast\nSecure\nAlways Online");
+}
+
+function contact() {
+    alert("Webcreator1117");
+}
+
+function fast() {
+    alert("Fast loading experience.");
+}
+
+function secure() {
+    alert("Secure website access.");
+}
+
+function online() {
+    alert("Designed to stay available.");
+}
+
 </script>
 
 </body>
