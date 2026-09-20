@@ -1,481 +1,374 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Webcreator1117</title>
 
-<!-- Gray globe favicon -->
-
-<link
-    rel="icon"
-    type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23999999'/%3E%3Cpath d='M3 32h58M32 3c10 9 15 19 15 29s-5 20-15 29c-10-9-15-19-15-29S22 12 32 3zM10 15c7 5 14 7 22 7s15-2 22-7M10 49c7-5 14-7 22-7s15 2 22 7' fill='none' stroke='%23eeeeee' stroke-width='3'/%3E%3C/svg%3E"
->
+<!-- 🌐 World Wide Web emoji as browser/bookmark icon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' text-anchor='middle' font-size='50'%3E🌐%3C/text%3E%3C/svg%3E">
 
 <style>
-
 * {
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     margin: 0;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    background: #020617;
     color: white;
 }
 
-/* Space background */
-
 body {
-    overflow: hidden;
-
     background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(0, 132, 255, 0.22),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(60, 0, 255, 0.16),
-            transparent 22%
-        ),
-
-        radial-gradient(
-            circle at 85% 25%,
-            rgba(0, 210, 255, 0.12),
-            transparent 20%
-        ),
-
-        linear-gradient(
-            180deg,
-            #01030b 0%,
-            #061638 48%,
-            #020611 100%
-        );
+        radial-gradient(circle at 50% 35%, rgba(0,200,255,.22), transparent 25%),
+        radial-gradient(circle at 15% 20%, rgba(70,40,255,.18), transparent 25%),
+        radial-gradient(circle at 85% 20%, rgba(0,180,255,.15), transparent 25%),
+        linear-gradient(180deg, #01030b 0%, #071936 50%, #020611 100%);
 }
 
 /* Stars */
-
 body::before {
-
     content: "";
-
     position: fixed;
-
     inset: 0;
-
     pointer-events: none;
-
     background-image:
-
         radial-gradient(circle at 8% 12%, white 1px, transparent 2px),
-        radial-gradient(circle at 17% 34%, white 1px, transparent 2px),
-        radial-gradient(circle at 27% 18%, white 1px, transparent 2px),
-        radial-gradient(circle at 36% 9%, white 1px, transparent 2px),
-        radial-gradient(circle at 44% 29%, white 1px, transparent 2px),
-        radial-gradient(circle at 53% 14%, white 1px, transparent 2px),
-        radial-gradient(circle at 61% 31%, white 1px, transparent 2px),
-        radial-gradient(circle at 69% 11%, white 1px, transparent 2px),
-        radial-gradient(circle at 78% 25%, white 1px, transparent 2px),
-        radial-gradient(circle at 88% 15%, white 1px, transparent 2px),
-        radial-gradient(circle at 95% 36%, white 1px, transparent 2px),
-
-        radial-gradient(circle at 13% 65%, #5bbcff 1px, transparent 2px),
-        radial-gradient(circle at 31% 73%, #5bbcff 1px, transparent 2px),
-        radial-gradient(circle at 68% 70%, #5bbcff 1px, transparent 2px),
-        radial-gradient(circle at 87% 62%, #5bbcff 1px, transparent 2px);
-
-    opacity: 0.85;
-
-    z-index: 0;
+        radial-gradient(circle at 18% 30%, white 1px, transparent 2px),
+        radial-gradient(circle at 28% 12%, white 1px, transparent 2px),
+        radial-gradient(circle at 38% 24%, white 1px, transparent 2px),
+        radial-gradient(circle at 48% 10%, white 1px, transparent 2px),
+        radial-gradient(circle at 58% 27%, white 1px, transparent 2px),
+        radial-gradient(circle at 68% 13%, white 1px, transparent 2px),
+        radial-gradient(circle at 78% 30%, white 1px, transparent 2px),
+        radial-gradient(circle at 88% 11%, white 1px, transparent 2px),
+        radial-gradient(circle at 94% 38%, white 1px, transparent 2px);
+    opacity: .9;
 }
 
-/* Blue horizon glow */
-
-.horizon {
-
-    position: fixed;
-
-    left: 50%;
-
-    bottom: 18%;
-
-    width: 100%;
-
-    height: 240px;
-
-    transform: translateX(-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(0, 180, 255, 0.25),
-            transparent 65%
-        );
-
-    filter: blur(20px);
-
-    pointer-events: none;
-}
-
-/* CSS mountains */
-
+/* Mountain shapes */
 .mountains {
-
     position: fixed;
-
     left: 0;
-
     right: 0;
-
     bottom: 0;
-
     height: 35%;
-
     pointer-events: none;
-
 }
 
 .mountain {
-
     position: absolute;
-
     bottom: 0;
-
     width: 0;
-
     height: 0;
-
-    border-left: 180px solid transparent;
-
-    border-right: 180px solid transparent;
-
+    border-left: 190px solid transparent;
+    border-right: 190px solid transparent;
     border-bottom: 260px solid #020817;
-
-    filter:
-        drop-shadow(
-            0 0 20px rgba(0, 100, 255, .2)
-        );
 }
 
-.m1 {
-    left: -100px;
-    transform: scale(1.4);
-}
-
-.m2 {
-    left: 10%;
-    transform: scale(.9);
-}
-
-.m3 {
-    left: 27%;
-    transform: scale(1.2);
-}
-
-.m4 {
-    right: 23%;
-    transform: scale(1.3);
-}
-
-.m5 {
-    right: 8%;
-    transform: scale(.95);
-}
-
-.m6 {
-    right: -120px;
-    transform: scale(1.5);
-}
-
-/* Main content */
-
-.container {
-
-    position: relative;
-
-    z-index: 10;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 80px 20px;
-}
-
-/* Logo */
-
-.logo-icon {
-
-    width: 105px;
-
-    height: 105px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 58px;
-
-    font-weight: 900;
-
-    color: #8de3ff;
-
-    text-shadow:
-        0 0 15px #00cfff,
-        0 0 40px #0077ff;
-}
-
-.logo {
-
-    margin-top: 5px;
-
-    font-size: clamp(44px, 7vw, 88px);
-
-    font-weight: 800;
-
-    letter-spacing: -3px;
-
-    text-shadow:
-        0 0 15px rgba(255,255,255,.25),
-        0 0 40px rgba(0,140,255,.5);
-}
-
-.logo span {
-    color: #00bfff;
-}
-
-.subtitle {
-
-    margin-top: 12px;
-
-    font-size: clamp(13px, 1.7vw, 20px);
-
-    letter-spacing: 7px;
-
-    color: #b9d7ff;
-}
-
-/* Launch button */
-
-.launch {
-
-    margin-top: 50px;
-
-    min-width: 390px;
-
-    padding: 24px 42px;
-
-    border: 2px solid #6be2ff;
-
-    border-radius: 24px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0, 139, 255, .95),
-            rgba(44, 67, 255, .92)
-        );
-
-    font-size: 24px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 12px rgba(0, 200, 255, .9),
-        0 0 35px rgba(0, 120, 255, .7),
-        inset 0 0 20px rgba(255,255,255,.12);
-
-    transition:
-        transform .2s,
-        box-shadow .2s;
-}
-
-.launch:hover {
-
-    transform: scale(1.06);
-
-    box-shadow:
-        0 0 20px rgba(0, 230, 255, 1),
-        0 0 60px rgba(0, 120, 255, .9),
-        inset 0 0 25px rgba(255,255,255,.2);
-}
-
-.launch:active {
-
-    transform: scale(.97);
-}
-
-/* Feature buttons */
-
-.features {
-
-    display: flex;
-
-    gap: 70px;
-
-    margin-top: 70px;
-}
-
-.feature {
-
-    width: 140px;
-
-    padding: 15px;
-
-    border: 0;
-
-    background: transparent;
-
-    color: #b8d8ff;
-
-    cursor: pointer;
-
-    transition:
-        transform .2s,
-        color .2s;
-}
-
-.feature:hover {
-
-    transform: translateY(-6px);
-
-    color: white;
-}
-
-.feature-icon {
-
-    font-size: 32px;
-
-    color: #64dfff;
-
-    margin-bottom: 10px;
-
-    text-shadow:
-        0 0 15px #00bfff;
-}
-
-.feature-title {
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-}
-
-.feature-description {
-
-    margin-top: 5px;
-
-    font-size: 11px;
-
-    color: #7898c0;
+.m1 { left: -100px; transform: scale(1.5); }
+.m2 { left: 8%; transform: scale(.9); }
+.m3 { left: 25%; transform: scale(1.2); }
+.m4 { right: 24%; transform: scale(1.25); }
+.m5 { right: 7%; transform: scale(.95); }
+.m6 { right: -120px; transform: scale(1.5); }
+
+/* Blue horizon */
+.horizon {
+    position: fixed;
+    left: 50%;
+    bottom: 16%;
+    width: 100%;
+    height: 250px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+        ellipse,
+        rgba(0,180,255,.28),
+        transparent 65%
+    );
+    filter: blur(25px);
+    pointer-events: none;
 }
 
 /* Navigation */
-
 .nav {
-
     position: fixed;
-
-    top: 28px;
-
-    right: 40px;
-
+    top: 25px;
+    right: 35px;
+    z-index: 10;
     display: flex;
-
-    gap: 30px;
-
-    z-index: 20;
+    gap: 28px;
 }
 
 .nav button {
-
     border: 0;
-
     background: transparent;
-
-    color: #b7cfff;
-
+    color: #bdd8ff;
     font-size: 14px;
-
-    letter-spacing: 1px;
-
     cursor: pointer;
-
-    transition:
-        color .2s,
-        transform .2s;
 }
 
 .nav button:hover {
+    color: #43d9ff;
+}
 
-    color: #4fdcff;
+/* Main */
+.container {
+    position: relative;
+    z-index: 5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-    transform: translateY(-2px);
+/* THE ACTUAL WEB EMOJI */
+.web-emoji {
+    font-size: 92px;
+    line-height: 1;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 18px rgba(0,200,255,.75));
+}
+
+/* Brand */
+.logo {
+    font-size: clamp(45px, 7vw, 88px);
+    font-weight: 800;
+    letter-spacing: -3px;
+    text-shadow:
+        0 0 15px rgba(255,255,255,.2),
+        0 0 45px rgba(0,140,255,.55);
+}
+
+.logo span {
+    color: #00c8ff;
+}
+
+.subtitle {
+    margin-top: 12px;
+    color: #bddcff;
+    letter-spacing: 6px;
+    font-size: 16px;
+}
+
+/* Launch */
+.launch {
+    margin-top: 48px;
+    padding: 23px 48px;
+    min-width: 360px;
+
+    border: 2px solid #61dcff;
+    border-radius: 22px;
+
+    background: linear-gradient(135deg, #087fff, #3139d8);
+
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(0,200,255,.9),
+        0 0 45px rgba(0,100,255,.65);
+
+    transition: .2s;
+}
+
+.launch:hover {
+    transform: scale(1.06);
+    box-shadow:
+        0 0 25px rgba(0,220,255,1),
+        0 0 70px rgba(0,100,255,.85);
+}
+
+/* Feature buttons */
+.features {
+    display: flex;
+    gap: 55px;
+    margin-top: 55px;
+}
+
+.feature {
+    border: 0;
+    background: transparent;
+    color: #a9c8ed;
+    cursor: pointer;
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 30px;
+    color: #62dcff;
+    margin-bottom: 8px;
+}
+
+.feature-title {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.feature:hover {
+    color: white;
 }
 
 /* Footer */
-
 .footer {
-
     position: fixed;
-
+    bottom: 18px;
     left: 50%;
-
-    bottom: 20px;
-
     transform: translateX(-50%);
-
-    color: rgba(180,215,255,.55);
-
+    color: rgba(190,220,255,.5);
     font-size: 10px;
-
     letter-spacing: 4px;
-
-    z-index: 15;
 }
 
-/* Mobile */
-
 @media (max-width: 700px) {
-
     .nav {
         display: none;
     }
 
-    .logo {
-        font-size: 43px;
+    .launch {
+        min-width: 280px;
+        font-size: 19px;
     }
 
-    .subtitle {
-        font-size: 12
+    .features {
+        gap: 20px;
+    }
+
+    .web-emoji {
+        font-size: 70px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="horizon"></div>
+
+<div class="mountains">
+    <div class="mountain m1"></div>
+    <div class="mountain m2"></div>
+    <div class="mountain m3"></div>
+    <div class="mountain m4"></div>
+    <div class="mountain m5"></div>
+    <div class="mountain m6"></div>
+</div>
+
+<div class="nav">
+    <button onclick="showMessage('Home')">Home</button>
+    <button onclick="showMessage('About')">About</button>
+    <button onclick="showMessage('Features')">Features</button>
+    <button onclick="showMessage('Contact')">Contact</button>
+</div>
+
+<div class="container">
+
+    <div class="web-emoji">🌐</div>
+
+    <div class="logo">
+        Webcreator<span>1117</span>
+    </div>
+
+    <div class="subtitle">
+        YOUR WEBSITE · ONE CLICK AWAY
+    </div>
+
+    <button class="launch" onclick="launchWebsite()">
+        🚀 LAUNCH WEBSITE
+    </button>
+
+    <div class="features">
+
+        <button class="feature" onclick="showMessage('Fast')">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">FAST</div>
+        </button>
+
+        <button class="feature" onclick="showMessage('Secure')">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-title">SECURE</div>
+        </button>
+
+        <button class="feature" onclick="showMessage('Online')">
+            <div class="feature-icon">◎</div>
+            <div class="feature-title">ONLINE</div>
+        </button>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    WEBCREATOR1117 · BUILDING A BETTER WEB
+</div>
+
+<script>
+
+function launchWebsite() {
+
+    const tab = window.open("", "_blank");
+
+    if (!tab) {
+        alert("Please allow pop-ups for this website.");
+        return;
+    }
+
+    tab.document.open();
+
+    tab.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Webcreator1117</title>
+
+            <style>
+                html, body {
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: black;
+                    overflow: hidden;
+                }
+
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                }
+            </style>
+        </head>
+
+        <body>
+
+            <iframe
+                src="https://webcreator1117-official-web.ai.studio"
+                allow="fullscreen">
+            </iframe>
+
+        </body>
+        </html>
+    `);
+
+    tab.document.close();
+}
+
+function showMessage(name) {
+    alert(name + " button clicked");
+}
+
+</script>
+
+</body>
+</html>
